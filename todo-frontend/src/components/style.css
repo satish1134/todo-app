@@ -1,0 +1,140 @@
+/* General styles */
+body {
+  background-color: #f8f9fa; /* Light background */
+}
+
+.form-control {
+  border-radius: 5px; /* Rounded corners for inputs */
+}
+
+.btn {
+  border-radius: 5px; /* Rounded corners for buttons */
+}
+
+.bg-white {
+  background-color: white; /* Ensure the background of forms is white */
+}
+
+.shadow {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a shadow effect */
+}
+
+/* Welcome message styles */
+.welcome-message {
+  text-align: center;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #6e7bff, #5c6bf0);
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.welcome-message h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.welcome-message p {
+  margin: 5px 0 0;
+}
+
+/* Dashboard styles */
+.dashboard {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  max-width: 1200px;
+  margin: auto;
+}
+
+.task-input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.task-input select {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.task-input button {
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.task-input button:hover {
+  background-color: #0056b3;
+  transition: background-color 0.3s ease;
+}
+
+.task-input button:active {
+  background-color: #0056b3;
+  transform: scale(0.98);
+}
+
+.task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px); /* Added backdrop blur */
+  transition: box-shadow 0.3s ease;
+}
+
+.task-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Miscellaneous styles for better UI */
+.alert {
+  padding: 12px; /* Slightly larger padding */
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb; /* Added subtle border */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 15px;
+    max-width: 100%;
+    box-shadow: none;
+  }
+
+  .task-input {
+    flex-direction: column;
+  }
+
+  .task-input input,
+  .task-input select,
+  .task-input button {
+    margin: 5px 0;
+    width: 100%;
+  }
+}
