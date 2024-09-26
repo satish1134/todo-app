@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'; // For redirection
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState('');
-  const [status, setStatus] = useState('pending'); // Default status for new tasks
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Navigation for redirection
 
@@ -28,11 +27,11 @@ const Dashboard = () => {
 
   const handleAddTask = async () => {
     try {
-      // Add new task with the default status
+      // Add new task with default status "pending"
       await axios.post('http://localhost:5000/api/todos', {
         title: newTask,
         description: '', // Placeholder for description
-        status: status, // Use the default status here
+        status: 'pending', // Default status for new tasks
       }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
