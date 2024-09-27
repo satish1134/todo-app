@@ -9,10 +9,13 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // Navigation for redirection
 
+  // Use the environment variable for the base API URL
+  const apiUrl = process.env.REACT_APP_API_URL + '/api/todos';
+
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/todos', {
+        const response = await axios.get(apiUrl, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setTasks(response.data);
@@ -23,12 +26,12 @@ const Dashboard = () => {
     };
 
     fetchTasks();
-  }, []);
+  }, [apiUrl]);
 
   const handleAddTask = async () => {
     try {
       // Add new task with default status "pending"
-      await axios.post('http://localhost:5000/api/todos', {
+      await axios.post(apiUrl, {
         title: newTask,
         description: '', // Placeholder for description
         status: 'pending', // Default status for new tasks
@@ -37,7 +40,7 @@ const Dashboard = () => {
       });
       setNewTask(''); // Reset input field
       // Refetch tasks after adding a new one
-      const response = await axios.get('http://localhost:5000/api/todos', {
+      const response = await axios.get(apiUrl, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks(response.data);
@@ -49,13 +52,13 @@ const Dashboard = () => {
 
   const handleUpdateTask = async (taskId, newStatus) => {
     try {
-      await axios.put(`http://localhost:5000/api/todos/${taskId}`, {
+      await axios.put(`${apiUrl}/${taskId}`, {
         status: newStatus,
       }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       // Refetch tasks after updating the status
-      const response = await axios.get('http://localhost:5000/api/todos', {
+      const response = await axios.get(apiUrl, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks(response.data);
@@ -67,11 +70,11 @@ const Dashboard = () => {
 
   const handleDeleteTask = async (taskId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${taskId}`, {
+      await axios.delete(`${apiUrl}/${taskId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       // Refetch tasks after deleting
-      const response = await axios.get('http://localhost:5000/api/todos', {
+      const response = await axios.get(apiUrl, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setTasks(response.data);
